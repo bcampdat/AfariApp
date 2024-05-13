@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>
+        <%= titulo %>
+    </title>
+    <%- include('plantillas/cabecera.ejs') -%>
+</head>
+
+<body>
+    <%- include('plantillas/nav.ejs') -%>
+
+    <header class="container vh-100 d-flex justify-content-center align-items-center">
+        <div class="d-flex flex-column justify-content-center align-items-center">
+            <img src="/img/carta.jpg" alt="" width="300">
+            <h1 class="display-1 my-5 text-uppercase fw-bold">Carta</h1>
+            <a href="/principal" class="btn btn-warning w-25">Menu</a>
+        </div>
+    </header>
+        <h1>Carta</h1>
+    <%- include('plantillas/pie.ejs') -%>
+</body>
+
+</html>
