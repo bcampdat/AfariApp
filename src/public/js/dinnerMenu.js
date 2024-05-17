@@ -163,7 +163,7 @@ let bienvenida = parseInt(prompt("Bienvenido, ¿Qué hora es _ a.m ?"));
 
 switch (true) {
   case bienvenida >= 7 && bienvenida <= 10:
-    confirm("Comenzamos...El Menu para hoy es:");
+    confirm("Comenzamos...El Menu para hoy es: 🍽 🍳");
     mostrarMenu(Desayuno);
 
     alert(" Buenos Dias, 😎 A Desayunar!!!.");
@@ -173,7 +173,7 @@ switch (true) {
     break;
 
   case bienvenida >= 12 && bienvenida <= 15:
-    confirm("Comenzamos...El Menu para hoy es:");
+    confirm("Comenzamos...El Menu para hoy es: 🍽 🍳");
     mostrarMenu(Almuerzo);
 
     alert("Genial 👍 A Comer !!!.");
@@ -182,7 +182,7 @@ switch (true) {
     break;
 
   case bienvenida >= 20 && bienvenida <= 23:
-    confirm("Comenzamos...El Menu para hoy es:");
+    confirm("Comenzamos...El Menu para hoy es: 🍽 🍳");
     mostrarMenu(Cena);
     
     alert("😉 Buen Provecho !!!.");
@@ -191,7 +191,7 @@ switch (true) {
     break;
 
   default:
-    alert("Upps, Que pena ahora está cerrado");
+    alert("Upps, 😅 Que pena ahora está cerrado");
     break;
 }
 
