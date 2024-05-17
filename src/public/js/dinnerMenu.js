@@ -87,8 +87,8 @@ const comentarios = () => {
 };
 
 function eliminarAcentos(str) {
-  var sinAcentos = str.normalize("NFD").replace(/[\u0300-\u036f]/g, "");
-  var trimmed = sinAcentos.trim();
+  let sinAcentos = str.normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+  let trimmed = sinAcentos.trim();
   if (trimmed.length > 10) {
     throw new Error("La descripción es demasiado larga.");
   } else {
@@ -163,7 +163,9 @@ let bienvenida = parseInt(prompt("Bienvenido, ¿Qué hora es _ a.m ?"));
 
 switch (true) {
   case bienvenida >= 7 && bienvenida <= 10:
+    confirm("Comenzamos...El Menu para hoy es:");
     mostrarMenu(Desayuno);
+
     alert(" Buenos Dias, 😎 A Desayunar!!!.");
 
     guardarEleccion(Desayuno, eleccionCliente);
@@ -171,15 +173,19 @@ switch (true) {
     break;
 
   case bienvenida >= 12 && bienvenida <= 15:
+    confirm("Comenzamos...El Menu para hoy es:");
     mostrarMenu(Almuerzo);
+
     alert("Genial 👍 A Comer !!!.");
     guardarEleccion(Almuerzo, eleccionCliente);
     mostrarEleccion(eleccionCliente);
     break;
 
   case bienvenida >= 20 && bienvenida <= 23:
+    confirm("Comenzamos...El Menu para hoy es:");
     mostrarMenu(Cena);
-    alert(" 😉 Buen Provecho !!!.");
+    
+    alert("😉 Buen Provecho !!!.");
     guardarEleccion(Cena, eleccionCliente);
     mostrarEleccion(eleccionCliente);
     break;
