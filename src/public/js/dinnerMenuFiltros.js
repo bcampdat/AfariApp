@@ -4,25 +4,25 @@ const Desayuno = [
     options: [
       { name: "Solo", price: 1.5 },
       { name: "Leche", price: 1.75 },
-      { name: "Cortado", price: 1.75 },
-    ],
+      { name: "Cortado", price: 1.75 }
+    ]
   },
   {
     type: "Zumo",
     options: [
       { name: "Naranja", price: 2.0 },
       { name: "Tomate", price: 1.75 },
-      { name: "Melocotón", price: 1.75 },
-    ],
+      { name: "Melocotón", price: 1.75 }
+    ]
   },
   {
     type: "Pintxo",
     options: [
       { name: "Tostada", price: 1.5 },
       { name: "Croissant", price: 1.75 },
-      { name: "Tortilla", price: 1.75 },
-    ],
-  },
+      { name: "Tortilla", price: 1.75 }
+    ]
+  }
 ];
 
 const Almuerzo = [
@@ -31,25 +31,25 @@ const Almuerzo = [
     options: [
       { name: "Arroz", price: 6.5 },
       { name: "Lentejas", price: 7.75 },
-      { name: "Ensalada", price: 5.75 },
-    ],
+      { name: "Ensalada", price: 5.75 }
+    ]
   },
   {
     type: "Segundo",
     options: [
       { name: "Filete", price: 6.5 },
       { name: "Pollo", price: 7.75 },
-      { name: "Pescado", price: 8.75 },
-    ],
+      { name: "Pescado", price: 8.75 }
+    ]
   },
   {
     type: "Postre",
     options: [
       { name: "Flan", price: 2.5 },
       { name: "Helado", price: 1.75 },
-      { name: "Tarta", price: 2.75 },
-    ],
-  },
+      { name: "Tarta", price: 2.75 }
+    ]
+  }
 ];
 
 const Cena = [
@@ -58,16 +58,27 @@ const Cena = [
     options: [
       { name: "Porrusalda", price: 6.5 },
       { name: "Sopa", price: 5.75 },
-      { name: "Verduras", price: 7.75 },
-    ],
+      { name: "Verduras", price: 7.75 }
+    ]
   },
   {
     type: "Postre",
     options: [
-      { name: "Yogur", price: 6.5 },
-      { name: "Fruta", price: 5.75 },
-    ],
-  },
+      { name: "Yogur", price: 1.5 },
+      { name: "Fruta", price: 1.5 }
+    ]
+  }
+];
+
+const Bebidas = [
+  {
+    type: "Bebidas",
+    options: [
+      { name: "Cerveza", price: 2.5 },
+      { name: "Vino", price: 3.75 },
+      { name: "Agua", price: 1.75 }
+    ]
+  }
 ];
 
 const comentarios = () => {
@@ -80,7 +91,7 @@ const comentarios = () => {
     "Experiencia única.",
     "Satisfacción garantizada.",
     "Uno de mis favoritos",
-    "Irresistible",
+    "Irresistible"
   ];
   return comments[Math.floor(Math.random() * comments.length)];
 };
@@ -90,12 +101,17 @@ function eliminarAcentos(str) {
 }
 
 function filtrarPorTipos(menu, tipos) {
-  return menu.filter((item) => tipos.includes(item.type));
+  return menu.filter((item) => tipos.includes(item.options));
+}
+
+function filtrarPorTiposAlmuerzo(Almuerzo, tipos) {
+  return menu.filter((item) => tipos.includes(item.includes(item.options)));
 }
 
 function guardarEleccion(menu, eleccionCliente) {
   let total = 0;
   let menuFiltrado = [...menu];
+  let tiposAlmuerzo = ["Primero", "Segundo"];
 
   do {
     let eleccion = prompt(
@@ -106,13 +122,13 @@ function guardarEleccion(menu, eleccionCliente) {
 
     let opcion = menuFiltrado.find(
       (item) =>
-        item.type.toLowerCase() === eliminarAcentos(eleccion.toLowerCase())
+        item.options.toLowerCase() === eliminarAcentos(eleccion.toLowerCase())
     );
 
     if (opcion) {
       let detalle = prompt(
         `✍ ¿Qué tipo de ${eleccion} te gustaría?\n${opcion.options
-          .map((o) => `${o.name} ⇛ ${o.price}`)
+          .map((o) => `${o.name} ⇛ ${o.price} €`)
           .join("\n")}`
       );
 
@@ -124,7 +140,7 @@ function guardarEleccion(menu, eleccionCliente) {
         eleccionCliente.push({
           type: opcion.type,
           name: detalleElegido.name,
-          price: detalleElegido.price,
+          price: detalleElegido.price
         });
         total += detalleElegido.price;
         alert(comentarios());
@@ -135,14 +151,18 @@ function guardarEleccion(menu, eleccionCliente) {
       alert(`Error 🛑 \n"${eleccion}" no es correcto. Prueba otra vez.`);
     }
 
-    alert(`El total a pagar es: ${total.toFixed(2)} €`);
-
     if (menu === Desayuno && confirm("¿Te apetece algo de comer?")) {
       menuFiltrado = filtrarPorTipos(Desayuno, ["Pintxo"]);
-    } else if (menu === Almuerzo && confirm("¿Quieres un postre?")) {
-      menuFiltrado = filtrarPorTipos(Almuerzo, ["Postre"]);
+    } else if (menu === Almuerzo && menuFiltrado = filtrarPorTiposAlmuerzo(Almuerzo, tiposAlmuerzo){      
+      confirm("¿Quieres un postre?") && menuFiltrado = filtrarPorTipos(Almuerzo, ["Postre"]);
+      }
     } else if (menu === Cena && confirm("¿Quieres un postre?")) {
       menuFiltrado = filtrarPorTipos(Cena, ["Postre"]);
+    } else if (
+      (menu === Almuerzo || menu === Cena) &&
+      confirm("¿Quieres algo de beber?")
+    ) {
+      menuFiltrado = filtrarPorTipos(Bebidas, ["Bebidas"]);
     } else {
       break;
     }
@@ -168,7 +188,7 @@ let tiempo, hora, minutos;
 
 do {
   tiempo = prompt(
-    " Bienvenido !!!, ¿Qué hora es?   🕑 \nIntroduce la hora en formato de 24 horas "
+    " Bienvenido !!!, ¿Qué hora es?   🕑 \nIntroduce la hora en formato de 24 horas  ( hh:mm ) "
   );
   [hora, minutos] = tiempo.split(":");
 
@@ -191,7 +211,7 @@ do {
   }
 } while (!tiempo);
 
-let eleccionCliente = []; // Asegúrate de que eleccionCliente esté definido
+let eleccionCliente = [];
 
 switch (true) {
   case (bienvenida.hora == 7 && bienvenida.minutos >= 0) ||

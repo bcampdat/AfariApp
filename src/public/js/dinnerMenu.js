@@ -119,7 +119,7 @@ function guardarEleccion(menu, eleccionCliente) {
     if (opcion) {
       let detalle = prompt(
         ` ✍  ¿Qué tipo de ${eleccion} te gustaría?...\n ${opcion.options
-          .map((o) => `${o.name} ⇛ ${o.price}`)
+          .map((o) => `${o.name} ⇛ ${o.price} €`)
           .join("\n ")}`
       );
       let detalleElegido = opcion.options.find(
@@ -157,7 +157,7 @@ let tiempo, hora, minutos;
 
 do {
   tiempo = prompt(
-    " Bienvenido !!!, ¿Qué hora es?   🕑 \nIntroduce la hora en formato de 24 horas "
+    " Bienvenido !!!, ¿Qué hora es?   🕑 \nIntroduce la hora en formato de 24 horas (hh:mm)"
   );
   [hora, minutos] = tiempo.split(":");
 
