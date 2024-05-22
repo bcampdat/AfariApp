@@ -4,25 +4,25 @@ const Desayuno = [
     options: [
       { name: "Solo", price: 1.5 },
       { name: "Leche", price: 1.75 },
-      { name: "Cortado", price: 1.75 }
-    ]
+      { name: "Cortado", price: 1.75 },
+    ],
   },
   {
     type: "Zumo",
     options: [
       { name: "Naranja", price: 2.0 },
       { name: "Tomate", price: 1.75 },
-      { name: "Melocotón", price: 1.75 }
-    ]
+      { name: "Melocotón", price: 1.75 },
+    ],
   },
   {
     type: "Pintxo",
     options: [
       { name: "Tostada", price: 1.5 },
       { name: "Croissant", price: 1.75 },
-      { name: "Tortilla", price: 1.75 }
-    ]
-  }
+      { name: "Tortilla", price: 1.75 },
+    ],
+  },
 ];
 
 const Almuerzo = [
@@ -31,25 +31,25 @@ const Almuerzo = [
     options: [
       { name: "Arroz", price: 6.5 },
       { name: "Lentejas", price: 7.75 },
-      { name: "Ensalada", price: 5.75 }
-    ]
+      { name: "Ensalada", price: 5.75 },
+    ],
   },
   {
     type: "Segundo",
     options: [
       { name: "Filete", price: 6.5 },
       { name: "Pollo", price: 7.75 },
-      { name: "Pescado", price: 8.75 }
-    ]
+      { name: "Pescado", price: 8.75 },
+    ],
   },
   {
     type: "Postre",
     options: [
       { name: "Flan", price: 2.5 },
       { name: "Helado", price: 1.75 },
-      { name: "Tarta", price: 2.75 }
-    ]
-  }
+      { name: "Tarta", price: 2.75 },
+    ],
+  },
 ];
 
 const Cena = [
@@ -58,40 +58,42 @@ const Cena = [
     options: [
       { name: "Porrusalda", price: 6.5 },
       { name: "Sopa", price: 5.75 },
-      { name: "Verduras", price: 7.75 }
-    ]
+      { name: "Verduras", price: 7.75 },
+    ],
   },
   {
     type: "Postre",
     options: [
       { name: "Yogur", price: 1.5 },
-      { name: "Fruta", price: 1.5 }
-    ]
-  }
+      { name: "Fruta", price: 1.5 },
+    ],
+  },
 ];
 
 const Bebidas = [
-  {
-    type: "Bebidas",
-    options: [
-      { name: "Cerveza", price: 2.5 },
-      { name: "Vino", price: 3.75 },
-      { name: "Agua", price: 1.75 }
-    ]
-  }
-];
+    {
+      type: "Bebidas",
+      options: [
+        { name: "Cerveza", price: 2.5 },
+        { name: "Vino", price: 3.75 },
+        { name: "Agua", price: 1.75 }
+      ]
+    }
+  ];
+
+
 
 const comentarios = () => {
   const comments = [
     "Genial!",
-    "¡Sabores que enamoran!",
-    "Viaja con cada bocado.",
-    "Equilibrio delicioso.",
-    "Magia en cada elección.",
-    "Experiencia única.",
+    "¡Sabores que enamoran! ",
+    " Viaja con cada bocado.",
+    " Equilibrio delicioso.",
+    " Magia en cada elección.",
+    " Experiencia única.",
     "Satisfacción garantizada.",
     "Uno de mis favoritos",
-    "Irresistible"
+    "Irresitible",
   ];
   return comments[Math.floor(Math.random() * comments.length)];
 };
@@ -100,95 +102,149 @@ function eliminarAcentos(str) {
   return str.normalize("NFD").replace(/[\u0300-\u036f]/g, "");
 }
 
-function filtrarPorTipos(menu, tipos) {
-  return menu.filter((item) => tipos.includes(item.options));
-}
-
-function filtrarPorTiposAlmuerzo(Almuerzo, tipos) {
-  return menu.filter((item) => tipos.includes(item.includes(item.options)));
-}
-
 function guardarEleccion(menu, eleccionCliente) {
   let total = 0;
-  let menuFiltrado = [...menu];
-  let tiposAlmuerzo = ["Primero", "Segundo"];
+  let continuar = true;
 
-  do {
-    let eleccion = prompt(
-      `✍ ¿Qué te apetece?\n${menuFiltrado
-        .map((item) => `${item.type.toUpperCase()}`)
-        .join("\n")}`
-    );
+  let eleccion = prompt(
+    `✍ ¿Qué te apetece?\n${menu
+      .slice(0, 2)
+      .map((item) => `${item.type.toUpperCase()}`)
+      .join("\n")}`
+  );
+  let opcion = menu.find(
+    (item) =>
+      item.type.toLowerCase() === eliminarAcentos(eleccion.toLowerCase())
+  );
 
-    let opcion = menuFiltrado.find(
-      (item) =>
-        item.options.toLowerCase() === eliminarAcentos(eleccion.toLowerCase())
-    );
+  switch (true) {
+    case menu === Desayuno:
+      if (opcion) {
+        let detalle = prompt(
+          ` ✍  ¿Qué tipo de ${opcion.type} te gustaría?...\n ${opcion.options
+            .map((o) => `${o.name} ⇛ ${o.price}`)
+            .join("\n ")}`
+        );
+        let detalleElegido = opcion.options.find(
+          (o) => o.name.toLowerCase() === eliminarAcentos(detalle.toLowerCase())
+        );
 
-    if (opcion) {
-      let detalle = prompt(
-        `✍ ¿Qué tipo de ${eleccion} te gustaría?\n${opcion.options
-          .map((o) => `${o.name} ⇛ ${o.price} €`)
-          .join("\n")}`
-      );
-
-      let detalleElegido = opcion.options.find(
-        (o) => o.name.toLowerCase() === eliminarAcentos(detalle.toLowerCase())
-      );
-
-      if (detalleElegido) {
-        eleccionCliente.push({
-          type: opcion.type,
-          name: detalleElegido.name,
-          price: detalleElegido.price
-        });
-        total += detalleElegido.price;
-        alert(comentarios());
+        if (detalleElegido) {
+          eleccionCliente.push({
+            type: opcion.type,
+            name: detalleElegido.name,
+            price: detalleElegido.price,
+          });
+          total += detalleElegido.price;
+          alert(comentarios());
+        } else {
+          alert(` Error 🛑 \n  Prueba otra vez.`);
+        }
       } else {
-        alert(`Error 🛑 \nEl ${detalle} no es correcto. Prueba otra vez.`);
-      }
-    } else {
-      alert(`Error 🛑 \n"${eleccion}" no es correcto. Prueba otra vez.`);
-    }
+        alert(`Error 🛑 \n   ${opcion.type}" no es correcto. Prueba otra vez.`);
+      }  //   aqui tengo el error  me dice true no es correcto pruebe otra 
 
-    
-    if (menu === Desayuno && confirm("¿Te apetece algo de comer?")) {
-      menuFiltrado = filtrarPorTipos(Desayuno, ["Pintxo"]);
-    } else if (menu === Almuerzo && confirm("¿Quieres un postre?")) {
-      menuFiltrado = filtrarPorTiposAlmuerzo(Almuerzo, tiposAlmuerzo);
-      if (confirm("¿Quieres un postre?")) {
-        menuFiltrado = filtrarPorTipos(Almuerzo, ["Postre"]);
+      if (continuar) {  
+        let eleccion = confirm(
+          `✍ ¿ Te apetece un ${menu
+            .slice(2)
+            .map((item) => `${item.type.toUpperCase()} ?`)
+            .join(" ")}`
+        );
+
+        let opcionP = menu.find(
+          (item) =>
+            item.type[2].toLowerCase() ===
+            eliminarAcentos(eleccion.toString().toLowerCase())
+        );
+        if (opcionP) {
+          let detalle = prompt(
+            ` ✍  ¿Qué tipo de ${
+              opcionP.type
+            } te gustaría?...\n ${opcionP.options
+              .map((o) => `${o.name} ⇛ ${o.price}`)
+              .join("")}`
+          );
+          let detalleElegido = opcionP.options.find(
+            (o) =>
+              o.name.toLowerCase() === eliminarAcentos(detalle.toLowerCase())
+          );
+
+          if (detalleElegido) {
+            eleccionCliente.push({
+              type: opcionP.type,
+              name: detalleElegido.name,
+              price: detalleElegido.price,
+            });
+            total += detalleElegido.price;
+            alert(comentarios());
+          } else {
+            alert(
+              ` Error 🛑 \n  El ${detalle}  no es correcto. Prueba otra vez.`
+            );
+          }
+        } else {
+          alert(`Error 🛑 \n   ${eleccion}" no es correcto. Prueba otra vez.`);
+        }
       }
-    } else if (menu === Cena && confirm("¿Quieres un postre?")) {
-      menuFiltrado = filtrarPorTipos(Cena, ["Postre"]);
-    } else if ((menu === Almuerzo || menu === Cena) && confirm("¿Quieres algo de beber?")) {
-      menuFiltrado = filtrarPorTipos(Bebidas, ["Bebidas"]);
-    } else {
+
+    case menu === Cena:
+      if (opcion) {
+        let detalle = prompt(
+          ` ✍  ¿Qué tipo de ${eleccion} te gustaría?...\n ${opcion.options
+            .map((o) => `${o.name} ⇛ ${o.price}`)
+            .join("\n ")}`
+        );
+        let detalleElegido = opcion.options.find(
+          (o) => o.name.toLowerCase() === eliminarAcentos(detalle.toLowerCase())
+        );
+
+        if (detalleElegido) {
+          eleccionCliente.push({
+            type: opcion.type,
+            name: detalleElegido.name,
+            price: detalleElegido.price,
+          });
+          total += detalleElegido.price;
+          alert(comentarios());
+        } else {
+          alert(
+            ` Error 🛑 \n  El ${detalle}  no es correcto. Prueba otra vez.`
+          );
+        }
+      } else {
+        alert(`Error 🛑 \n   ${eleccion}" no es correcto. Prueba otra vez.`);
+      }
+
+      continuar =
+        eliminarAcentos(prompt("¿Tal vez algo más? (sí/no)")).toLowerCase() ===
+        "si";
       break;
-    }
-  } while (true);
+  }
 }
 
 function mostrarEleccion(eleccionCliente) {
   let total = 0;
-  let mensaje = "TICKET : \n\nHas elegido:\n";
+  let mensaje = "TICKET : \n\n Has elegido:\n";
   eleccionCliente.forEach((item) => {
-    mensaje += `• ${item.type} ⇛⇛ ${item.name}: ${item.price} €\n`;
+    mensaje += `• ${item.type} ⇛ ⇛ ${item.name}: ${item.price} €\n`;
     total += item.price;
   });
-  mensaje += `Total a pagar ⇛⇛: ${total.toFixed(
+  mensaje += `Total a pagar  ⇛ ⇛ : ${total.toFixed(
     2
-  )} € \n\nGracias por su pedido. 👋`;
+  )}€ \n\n Gracias por su pedido. 👋`;
   alert(mensaje);
   console.log(mensaje);
 }
+
+let eleccionCliente = [];
 
 let bienvenida = {};
 let tiempo, hora, minutos;
 
 do {
   tiempo = prompt(
-    " Bienvenido !!!, ¿Qué hora es?   🕑 \nIntroduce la hora en formato de 24 horas  ( hh:mm ) "
+    " Bienvenido !!!, ¿Qué hora es?   🕑 \nIntroduce la hora en formato de 24 horas → ( hh:mm )"
   );
   [hora, minutos] = tiempo.split(":");
 
@@ -210,8 +266,6 @@ do {
       tiempo = null;
   }
 } while (!tiempo);
-
-let eleccionCliente = [];
 
 switch (true) {
   case (bienvenida.hora == 7 && bienvenida.minutos >= 0) ||
