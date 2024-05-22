@@ -71,17 +71,15 @@ const Cena = [
 ];
 
 const Bebidas = [
-    {
-      type: "Bebidas",
-      options: [
-        { name: "Cerveza", price: 2.5 },
-        { name: "Vino", price: 3.75 },
-        { name: "Agua", price: 1.75 }
-      ]
-    }
-  ];
-
-
+  {
+    type: "Bebidas",
+    options: [
+      { name: "Cerveza", price: 2.5 },
+      { name: "Vino", price: 3.75 },
+      { name: "Agua", price: 1.75 },
+    ],
+  },
+];
 
 const comentarios = () => {
   const comments = [
@@ -107,7 +105,7 @@ function guardarEleccion(menu, eleccionCliente) {
   let continuar = true;
 
   let eleccion = prompt(
-    `✍ ¿Qué te apetece?\n${menu
+    `✍ ¿Qué te apetece....?\n${menu
       .slice(0, 2)
       .map((item) => `${item.type.toUpperCase()}`)
       .join("\n")}`
@@ -140,39 +138,34 @@ function guardarEleccion(menu, eleccionCliente) {
         } else {
           alert(` Error 🛑 \n  Prueba otra vez.`);
         }
-      } else {
-        alert(`Error 🛑 \n   ${opcion.type}" no es correcto. Prueba otra vez.`);
-      }  //   aqui tengo el error  me dice true no es correcto pruebe otra 
-
-      if (continuar) {  
+      }
+      if (eleccion) {
         let eleccion = confirm(
-          `✍ ¿ Te apetece un ${menu
+          `✍ ¿ Te apetece 1 un ${menu
             .slice(2)
             .map((item) => `${item.type.toUpperCase()} ?`)
             .join(" ")}`
         );
 
-        let opcionP = menu.find(
-          (item) =>
-            item.type[2].toLowerCase() ===
-            eliminarAcentos(eleccion.toString().toLowerCase())
-        );
-        if (opcionP) {
+        if (opcion) {
           let detalle = prompt(
-            ` ✍  ¿Qué tipo de ${
-              opcionP.type
-            } te gustaría?...\n ${opcionP.options
-              .map((o) => `${o.name} ⇛ ${o.price}`)
-              .join("")}`
+            `✍ ¿Qué tipo  ... de ${
+              opcion.type[2]
+            } te gustaría?...\n${opcion.options
+              .map((o) => `${o.name} ⇛ ${o.price} €`)
+              .join("\n")}`
           );
-          let detalleElegido = opcionP.options.find(
+          const opcionesPintxo = Desayuno.find(
+            (item) => item.type === "Pintxo"
+          ).options;
+          let detalleElegido = opcionesPintxo.find(
             (o) =>
               o.name.toLowerCase() === eliminarAcentos(detalle.toLowerCase())
           );
 
           if (detalleElegido) {
             eleccionCliente.push({
-              type: opcionP.type,
+              type: opcion.type,
               name: detalleElegido.name,
               price: detalleElegido.price,
             });
@@ -184,7 +177,7 @@ function guardarEleccion(menu, eleccionCliente) {
             );
           }
         } else {
-          alert(`Error 🛑 \n   ${eleccion}" no es correcto. Prueba otra vez.`);
+          alert(`Error 🛑 \n   " PINTXO. Prueba otra vez.`);
         }
       }
 
