@@ -1,103 +1,103 @@
 const Desayuno = [
   {
-    type: 'Cafe',
+    type: "Cafe",
     options: [
-      { name: 'Solo', price: 1.5 },
-      { name: 'Leche', price: 1.75 },
-      { name: 'Cortado', price: 1.75 },
+      { name: "Solo", price: 1.5 },
+      { name: "Leche", price: 1.75 },
+      { name: "Cortado", price: 1.75 },
     ],
   },
   {
-    type: 'Zumo',
+    type: "Zumo",
     options: [
-      { name: 'Naranja', price: 2.0 },
-      { name: 'Tomate', price: 1.75 },
-      { name: 'Melocotón', price: 1.75 },
+      { name: "Naranja", price: 2.0 },
+      { name: "Tomate", price: 1.75 },
+      { name: "Melocotón", price: 1.75 },
     ],
   },
   {
-    type: 'Pintxo',
+    type: "Pintxo",
     options: [
-      { name: 'Tostada', price: 1.5 },
-      { name: 'Croissant', price: 1.75 },
-      { name: 'Tortilla', price: 1.75 },
+      { name: "Tostada", price: 1.5 },
+      { name: "Croissant", price: 1.75 },
+      { name: "Tortilla", price: 1.75 },
     ],
   },
 ];
 
 const Almuerzo = [
   {
-    type: 'Primero',
+    type: "Primero",
     options: [
-      { name: 'Arroz', price: 6.5 },
-      { name: 'Lentejas', price: 7.75 },
-      { name: 'Ensalada', price: 5.75 },
+      { name: "Arroz", price: 6.5 },
+      { name: "Lentejas", price: 7.75 },
+      { name: "Ensalada", price: 5.75 },
     ],
   },
   {
-    type: 'Segundo',
+    type: "Segundo",
     options: [
-      { name: 'Filete', price: 6.5 },
-      { name: 'Pollo', price: 7.75 },
-      { name: 'Pescado', price: 8.75 },
+      { name: "Filete", price: 6.5 },
+      { name: "Pollo", price: 7.75 },
+      { name: "Pescado", price: 8.75 },
     ],
   },
   {
-    type: 'Postre',
+    type: "Postre",
     options: [
-      { name: 'Flan', price: 2.5 },
-      { name: 'Helado', price: 1.75 },
-      { name: 'Tarta', price: 2.75 },
+      { name: "Flan", price: 2.5 },
+      { name: "Helado", price: 1.75 },
+      { name: "Tarta", price: 2.75 },
     ],
   },
 ];
 
 const Cena = [
   {
-    type: 'Entrante',
+    type: "Entrante",
     options: [
-      { name: 'Porrusalda', price: 6.5 },
-      { name: 'Sopa', price: 5.75 },
-      { name: 'Verduras', price: 7.75 },
+      { name: "Porrusalda", price: 6.5 },
+      { name: "Sopa", price: 5.75 },
+      { name: "Verduras", price: 7.75 },
     ],
   },
   {
-    type: 'Postre',
+    type: "Postre",
     options: [
-      { name: 'Yogur', price: 1.5 },
-      { name: 'Fruta', price: 1.5 },
+      { name: "Yogur", price: 1.5 },
+      { name: "Fruta", price: 1.5 },
     ],
   },
 ];
 
 const Bebidas = [
   {
-    type: 'Bebidas',
+    type: "Bebidas",
     options: [
-      { name: 'Cerveza', price: 2.5 },
-      { name: 'Vino', price: 3.75 },
-      { name: 'Agua', price: 1.75 },
+      { name: "Cerveza", price: 2.5 },
+      { name: "Vino", price: 3.75 },
+      { name: "Agua", price: 1.75 },
     ],
   },
 ];
 
 const comentarios = () => {
   const comments = [
-    'Genial!',
-    '¡Sabores que enamoran! ',
-    ' Viaja con cada bocado.',
-    ' Equilibrio delicioso.',
-    ' Magia en cada elección.',
-    ' Experiencia única.',
-    'Satisfacción garantizada.',
-    'Uno de mis favoritos',
-    'Irresitible',
+    "Genial!",
+    "¡Sabores que enamoran! ",
+    " Viaja con cada bocado.",
+    " Equilibrio delicioso.",
+    " Magia en cada elección.",
+    " Experiencia única.",
+    "Satisfacción garantizada.",
+    "Uno de mis favoritos",
+    "Irresitible",
   ];
   return comments[Math.floor(Math.random() * comments.length)];
 };
 
 function eliminarAcentos(str) {
-  return str.normalize('NFD').replace(/[\u0300-\u036f]/g, '');
+  return str.normalize("NFD").replace(/[\u0300-\u036f]/g, "");
 }
 
 function guardarEleccionDesayuno(eleccionCliente) {
@@ -111,11 +111,11 @@ function guardarEleccionDesayuno(eleccionCliente) {
     do {
       eleccion = prompt(
         `✍ ¿Qué te apetece de ${tipo.type.toUpperCase()}?\n${tipo.options
-          .map(item => `${item.name} ⇛ ${item.price}€`)
-          .join('\n')}`
+          .map((item) => `${item.name} ⇛ ${item.price}€`)
+          .join("\n")}`
       );
       opcion = tipo.options.find(
-        item =>
+        (item) =>
           item.name.toLowerCase() === eliminarAcentos(eleccion.toLowerCase())
       );
       if (!opcion) {
@@ -134,16 +134,16 @@ function guardarEleccionDesayuno(eleccionCliente) {
   // Elección de Pintxo
   let pintxoEleccion;
   let pintxoOpcion;
-  const pintxoMenu = Desayuno.find(item => item.type === 'Pintxo');
+  const pintxoMenu = Desayuno.find((item) => item.type === "Pintxo");
 
   do {
     pintxoEleccion = prompt(
       `✍ ¿Qué te apetece de PINTXO?\n${pintxoMenu.options
-        .map(item => `${item.name} ⇛ ${item.price}€`)
-        .join('\n')}`
+        .map((item) => `${item.name} ⇛ ${item.price}€`)
+        .join("\n")}`
     );
     pintxoOpcion = pintxoMenu.options.find(
-      item =>
+      (item) =>
         item.name.toLowerCase() ===
         eliminarAcentos(pintxoEleccion.toLowerCase())
     );
@@ -165,17 +165,17 @@ function guardarEleccionDesayuno(eleccionCliente) {
 function guardarEleccionCena(eleccionCliente) {
   let total = 0;
 
-  Cena.forEach(tipo => {
+  Cena.forEach((tipo) => {
     let eleccion;
     let opcion;
     do {
       eleccion = prompt(
         `✍ ¿Qué te apetece de ${tipo.type.toUpperCase()}?\n${tipo.options
-          .map(item => `${item.name} ⇛ ${item.price}€`)
-          .join('\n')}`
+          .map((item) => `${item.name} ⇛ ${item.price}€`)
+          .join("\n")}`
       );
       opcion = tipo.options.find(
-        item =>
+        (item) =>
           item.name.toLowerCase() === eliminarAcentos(eleccion.toLowerCase())
       );
       if (!opcion) {
@@ -196,15 +196,15 @@ function guardarEleccionCena(eleccionCliente) {
   // Elección de Bebida
   let bebidaEleccion;
   let bebidaOpcion;
-  if (confirm('¿Te gustaría añadir una bebida?')) {
+  if (confirm("¿Te gustaría añadir una bebida?")) {
     do {
       bebidaEleccion = prompt(
         `✍ ¿Qué bebida te gustaría añadir?\n${Bebidas[0].options
-          .map(item => `${item.name} ⇛ ${item.price}€`)
-          .join('\n')}`
+          .map((item) => `${item.name} ⇛ ${item.price}€`)
+          .join("\n")}`
       );
       bebidaOpcion = Bebidas[0].options.find(
-        item =>
+        (item) =>
           item.name.toLowerCase() ===
           eliminarAcentos(bebidaEleccion.toLowerCase())
       );
@@ -226,17 +226,17 @@ function guardarEleccionCena(eleccionCliente) {
 function guardarEleccionAlmuerzo(eleccionCliente) {
   let total = 0;
 
-  Almuerzo.forEach(tipo => {
+  Almuerzo.forEach((tipo) => {
     let eleccion;
     let opcion;
     do {
       eleccion = prompt(
         `✍ ¿Qué te apetece de ${tipo.type.toUpperCase()}?\n${tipo.options
-          .map(item => `${item.name} ⇛ ${item.price}€`)
-          .join('\n')}`
+          .map((item) => `${item.name} ⇛ ${item.price}€`)
+          .join("\n")}`
       );
       opcion = tipo.options.find(
-        item =>
+        (item) =>
           item.name.toLowerCase() === eliminarAcentos(eleccion.toLowerCase())
       );
       if (!opcion) {
@@ -255,15 +255,15 @@ function guardarEleccionAlmuerzo(eleccionCliente) {
   alert(comentarios());
   let bebidaEleccion;
   let bebidaOpcion;
-  if (confirm('¿Te gustaría añadir una bebida?')) {
+  if (confirm("¿Te gustaría añadir una bebida?")) {
     do {
       bebidaEleccion = prompt(
         `✍ ¿Qué bebida te gustaría añadir?\n${Bebidas[0].options
-          .map(item => `${item.name} ⇛ ${item.price}€`)
-          .join('\n')}`
+          .map((item) => `${item.name} ⇛ ${item.price}€`)
+          .join("\n")}`
       );
       bebidaOpcion = Bebidas[0].options.find(
-        item =>
+        (item) =>
           item.name.toLowerCase() ===
           eliminarAcentos(bebidaEleccion.toLowerCase())
       );
@@ -284,12 +284,12 @@ function guardarEleccionAlmuerzo(eleccionCliente) {
 
 function mostrarEleccion(eleccionCliente) {
   let total = 0;
-  let mensaje = 'TICKET : \n\n Has elegido:\n';
-  eleccionCliente.forEach(item => {
+  let mensaje = "TICKET : \n\n Has elegido:\n";
+  eleccionCliente.forEach((item) => {
     mensaje += `• ${item.type} ⇛ ⇛ ${item.name}: ${item.price} €\n`;
     total += item.price;
   });
-  mensaje += `Total a pagar  ⇛ ⇛ : ${total.toFixed(
+  mensaje += `\n Total a pagar  ⇛ ⇛ : ${total.toFixed(
     2
   )}€ \n\n Gracias por su pedido. 👋`;
   alert(mensaje);
@@ -303,9 +303,9 @@ let tiempo, hora, minutos;
 
 do {
   tiempo = prompt(
-    ' Bienvenido !!!, ¿Qué hora es?   🕑 \nIntroduce la hora en formato de 24 horas → ( hh:mm )'
+    " Bienvenido !!!, ¿Qué hora es?   🕑 \nIntroduce la hora en formato de 24 horas → ( hh:mm )"
   );
-  [hora, minutos] = tiempo.split(':');
+  [hora, minutos] = tiempo.split(":");
 
   switch (true) {
     case /^\d{2}:\d{2}$/.test(tiempo) &&
@@ -320,7 +320,7 @@ do {
       break;
     default:
       alert(
-        'Error 🛑\n Por favor introduce un valor válido \n formato de 24 horas hh:mm \n no te olvides de los puntos :     ej: 00:00 '
+        "Error 🛑\n Por favor introduce un valor válido \n formato de 24 horas hh:mm \n no te olvides de los puntos :     ej: 00:00 "
       );
       tiempo = null;
   }
@@ -331,20 +331,20 @@ switch (true) {
     (bienvenida.hora == 9 && bienvenida.minutos <= 59) ||
     (bienvenida.hora > 7 && bienvenida.hora < 9):
     alert(
-      'HOLA!! BUENOS DIAS, 😎\n\n' +
-        ' **M E N U    D E S A Y U N O:**\n' +
-        '   ☕    CAFE : ......\n' +
-        '    •  SOLO      ⇛⇛⇛⇛     1.5 €\n' +
-        '    •  LECHE     ⇛⇛⇛⇛     1.75 €\n' +
-        '    •  CORTADO   ⇛⇛⇛⇛     1.75 €\n' +
-        '    🥤   ZUMO : ......\n' +
-        '    •  NARANJA   ⇛⇛⇛⇛     2.0 €\n' +
-        '    •  TOMATE    ⇛⇛⇛⇛     1.75 €\n' +
-        '    •  MELOCOTON ⇛⇛⇛⇛     1.75 €\n' +
-        '   🧽    PINTXO : ......\n' +
-        '    •  TOSTADA   ⇛⇛⇛⇛     1.5 €\n' +
-        '    •  CROISSANT ⇛⇛⇛⇛     1.75 €\n' +
-        '    •  TORTILLA  ⇛⇛⇛⇛     1.75 €\n'
+      "HOLA!! BUENOS DIAS, 😎\n\n" +
+        " **M E N U    D E S A Y U N O:**\n" +
+        "   ☕    CAFE : ......\n" +
+        "    •  SOLO      ⇛⇛⇛⇛     1.5 €\n" +
+        "    •  LECHE     ⇛⇛⇛⇛     1.75 €\n" +
+        "    •  CORTADO   ⇛⇛⇛⇛     1.75 €\n" +
+        "    🥤   ZUMO : ......\n" +
+        "    •  NARANJA   ⇛⇛⇛⇛     2.0 €\n" +
+        "    •  TOMATE    ⇛⇛⇛⇛     1.75 €\n" +
+        "    •  MELOCOTON ⇛⇛⇛⇛     1.75 €\n" +
+        "   🧽    PINTXO : ......\n" +
+        "    •  TOSTADA   ⇛⇛⇛⇛     1.5 €\n" +
+        "    •  CROISSANT ⇛⇛⇛⇛     1.75 €\n" +
+        "    •  TORTILLA  ⇛⇛⇛⇛     1.75 €\n"
     );
 
     guardarEleccionDesayuno(eleccionCliente);
@@ -355,20 +355,20 @@ switch (true) {
     (bienvenida.hora == 15 && bienvenida.minutos <= 59) ||
     (bienvenida.hora > 12 && bienvenida.hora < 15):
     alert(
-      'HOLA!! A COMER 😋 !!!.\n' +
-        ' ** M E N U  C O M I D A:**\n' +
-        '   🍚    PRIMER PLATO : ......\n' +
-        '    •  ARROZ      ⇛⇛⇛⇛     6.5 €\n' +
-        '    •  LENTEJAS   ⇛⇛⇛⇛     7.75 €\n' +
-        '    •  ENSALADA   ⇛⇛⇛⇛     5.75 €\n' +
-        '   🍗    SEGUNO PLATO : ......\n' +
-        '    •  FILETE     ⇛⇛⇛⇛     6.5 €\n' +
-        '    •  POLLO      ⇛⇛⇛⇛     7.75 €\n' +
-        '    •  PESCADO    ⇛⇛⇛⇛     8.75 €\n' +
-        '   🍰    POSTRE : ......\n' +
-        '    •  FLAN       ⇛⇛⇛⇛     2.5 €\n' +
-        '    •  HELADO     ⇛⇛⇛⇛     1.75 €\n' +
-        '    •  TARTA      ⇛⇛⇛⇛     2.75 €\n'
+      "HOLA!! A COMER 😋 !!!.\n" +
+        " ** M E N U  C O M I D A:**\n" +
+        "   🍚    PRIMER PLATO : ......\n" +
+        "    •  ARROZ      ⇛⇛⇛⇛     6.5 €\n" +
+        "    •  LENTEJAS   ⇛⇛⇛⇛     7.75 €\n" +
+        "    •  ENSALADA   ⇛⇛⇛⇛     5.75 €\n" +
+        "   🍗    SEGUNO PLATO : ......\n" +
+        "    •  FILETE     ⇛⇛⇛⇛     6.5 €\n" +
+        "    •  POLLO      ⇛⇛⇛⇛     7.75 €\n" +
+        "    •  PESCADO    ⇛⇛⇛⇛     8.75 €\n" +
+        "   🍰    POSTRE : ......\n" +
+        "    •  FLAN       ⇛⇛⇛⇛     2.5 €\n" +
+        "    •  HELADO     ⇛⇛⇛⇛     1.75 €\n" +
+        "    •  TARTA      ⇛⇛⇛⇛     2.75 €\n"
     );
 
     guardarEleccionAlmuerzo(eleccionCliente);
@@ -379,25 +379,24 @@ switch (true) {
     (bienvenida.hora == 23 && bienvenida.minutos <= 59) ||
     (bienvenida.hora > 19 && bienvenida.hora < 23):
     alert(
-      'HOLA!! 😉 Buen Provecho !!!.\n' +
-        ' ** M E N U  C E N A:**\n' +
-        '  🍲     ENTRANTE : ......\n' +
-        '  •  PORRUSALDA      ⇛⇛⇛⇛     6.5 €\n' +
-        '  •  SOPA            ⇛⇛⇛⇛     7.75 €\n' +
-        '  •  HUEVOS          ⇛⇛⇛⇛     5.75 €\n' +
-        ' 🍰      POSTRE : ......\n' +
-        '  •  YOGURT   ⇛⇛⇛⇛     1.5 €\n' +
-        '  •  FRUTA    ⇛⇛⇛⇛     1.5 €\n'
+      "HOLA!! 😉 Buen Provecho !!!.\n" +
+        " ** M E N U  C E N A:**\n" +
+        "  🍲     ENTRANTE : ......\n" +
+        "  •  PORRUSALDA      ⇛⇛⇛⇛     6.5 €\n" +
+        "  •  SOPA            ⇛⇛⇛⇛     7.75 €\n" +
+        "  •  HUEVOS          ⇛⇛⇛⇛     5.75 €\n" +
+        " 🍰      POSTRE : ......\n" +
+        "  •  YOGURT   ⇛⇛⇛⇛     1.5 €\n" +
+        "  •  FRUTA    ⇛⇛⇛⇛     1.5 €\n"
     );
 
-    
     guardarEleccionCena(eleccionCliente);
     mostrarEleccion(eleccionCliente);
     break;
 
   default:
     alert(
-      '  😔  Upps, Que pena ahora está cerrado!!!  \n   😊   En otra ocasión será'
+      "  😔  Upps, Que pena ahora está cerrado!!!  \n   😊   En otra ocasión será"
     );
     break;
 }
