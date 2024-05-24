@@ -118,6 +118,7 @@ function guardarEleccionDesayuno(eleccionCliente) {
         (item) =>
           item.name.toLowerCase() === eliminarAcentos(eleccion.toLowerCase())
       );
+      alert(comentarios());
       if (!opcion) {
         alert(`Error 🛑 \nPrueba otra vez.`);
       }
@@ -129,6 +130,8 @@ function guardarEleccionDesayuno(eleccionCliente) {
       price: opcion.price,
     });
     total += opcion.price;
+
+    alert(comentarios());
   }
 
   // Elección de Pintxo
@@ -147,6 +150,7 @@ function guardarEleccionDesayuno(eleccionCliente) {
         item.name.toLowerCase() ===
         eliminarAcentos(pintxoEleccion.toLowerCase())
     );
+    alert(comentarios());
     if (!pintxoOpcion) {
       alert(`Error 🛑 \nPrueba otra vez.`);
     }
@@ -178,6 +182,7 @@ function guardarEleccionCena(eleccionCliente) {
         (item) =>
           item.name.toLowerCase() === eliminarAcentos(eleccion.toLowerCase())
       );
+      alert(comentarios());
       if (!opcion) {
         alert(`Error 🛑 \nPrueba otra vez.`);
       }
@@ -239,6 +244,7 @@ function guardarEleccionAlmuerzo(eleccionCliente) {
         (item) =>
           item.name.toLowerCase() === eliminarAcentos(eleccion.toLowerCase())
       );
+      alert(comentarios());
       if (!opcion) {
         alert(`Error 🛑 \nPrueba otra vez.`);
       }
@@ -267,6 +273,7 @@ function guardarEleccionAlmuerzo(eleccionCliente) {
           item.name.toLowerCase() ===
           eliminarAcentos(bebidaEleccion.toLowerCase())
       );
+      alert(comentarios());
       if (!bebidaOpcion) {
         alert(`Error 🛑 \nPrueba otra vez.`);
       }
@@ -328,8 +335,8 @@ do {
 
 switch (true) {
   case (bienvenida.hora == 7 && bienvenida.minutos >= 0) ||
-    (bienvenida.hora == 9 && bienvenida.minutos <= 59) ||
-    (bienvenida.hora > 7 && bienvenida.hora < 9):
+    (bienvenida.hora == 10 && bienvenida.minutos <= 59) ||
+    (bienvenida.hora > 7 && bienvenida.hora < 10):
     alert(
       "HOLA!! BUENOS DIAS, 😎\n\n" +
         " **M E N U    D E S A Y U N O:**\n" +
